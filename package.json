@@ -1,0 +1,8 @@
+{
+  "name": "@rfizzle/gsuite-collector",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfizzle/gsuite-collector.git"
+  }
+}
