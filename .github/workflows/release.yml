@@ -34,15 +34,15 @@ jobs:
         include:
           - os: windows-latest
             goos: windows
-            bin: 'app.exe'
+            bin: 'gsuite-collector.exe'
             releaseos: windows
           - os: ubuntu-latest
             goos: linux
-            bin: 'app'
+            bin: 'gsuite-collector'
             releaseos: linux
           - os: macos-latest
             goos: darwin
-            bin: 'app'
+            bin: 'gsuite-collector'
             releaseos: osx
     steps:
       - name: Set up Go
@@ -53,7 +53,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt-get update && sudo apt-get install -y gcc-multilib
       - name: Set release name
-        run: echo "::set-env name=RELEASE::${{ matrix.releaseos }}-${{ matrix.arch }}"
+        run: echo "::set-env name=RELEASE::gsuite-collector-${{ matrix.releaseos }}-${{ matrix.arch }}"
       - uses: actions/checkout@v2
       - name: Build ${{ matrix.goos }}/${{ matrix.arch }}
         run: go build -o ${{ matrix.bin }}
