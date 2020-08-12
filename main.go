@@ -19,7 +19,7 @@ func main() {
 
 	// Setup Parameters via CLI or ENV
 	if err := setupCliFlags(); err != nil {
-		log.Fatalf("missing required paramters %v", err.Error())
+		log.Fatalf("initialization failed: %v", err.Error())
 	}
 
 	// Setup log writer

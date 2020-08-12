@@ -1,0 +1,17 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Pull Request on Release
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  pull_request:
+    branches: [ release ]
+
+jobs:
+  validate:
+    name: Validate Source Branch is Master
+    runs-on: ubuntu-latest
+    steps:
+      - name: check if pull source is master branch
+        run: echo ${{ github.head_ref }} | [[ $(</dev/stdin) == "master" ]]
