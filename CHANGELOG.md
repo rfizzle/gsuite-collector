@@ -1,4 +1,9 @@
-# 1.1.0 (2020-08-12)
+# 1.2.0 (2020-08-12)
+
+
+### Bug Fixes
+
+* updated collector-helpers library for parameter reference bug ([560e2dc](https://github.com/rfizzle/gsuite-collector/commit/560e2dceaea6329d739a48df836190c3c9a5e9a6))
 
 
 ### Features
