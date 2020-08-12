@@ -69,9 +69,9 @@ func BuildClient(credentialFilePath, impersonationEmail string) (*http.Client, e
 	return conf.Client(context.Background()), nil
 }
 
-func ActivitiesList(service *adminreports.Service, eventType, timestamp string, resultsChannel chan<- string) (int, error) {
+func ActivitiesList(service *adminreports.Service, eventType, startTime string, endTime string, resultsChannel chan<- string) (int, error) {
 	count := 0
-	response, err := service.Activities.List("all", eventType).StartTime(timestamp).MaxResults(1000).Do()
+	response, err := service.Activities.List("all", eventType).StartTime(startTime).EndTime(endTime).MaxResults(1000).Do()
 	if err != nil {
 		return 0, err
 	}
@@ -91,7 +91,7 @@ func ActivitiesList(service *adminreports.Service, eventType, timestamp string, 
 
 	// Handle paged responses
 	for response.NextPageToken != "" {
-		response, err := service.Activities.List("all", eventType).StartTime(timestamp).MaxResults(1000).PageToken(response.NextPageToken).Do()
+		response, err := service.Activities.List("all", eventType).StartTime(startTime).EndTime(endTime).MaxResults(1000).PageToken(response.NextPageToken).Do()
 		if err != nil {
 			return 0, err
 		}

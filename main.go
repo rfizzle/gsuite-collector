@@ -118,7 +118,7 @@ func getEvents(timestamp string, resultChannel chan<- string) (int, time.Time) {
 		if viper.GetBool("verbose") {
 			log.Printf("Getting event type %s\n", eventType)
 		}
-		resultSize, err := client.ActivitiesList(srv, eventType, timestamp, resultChannel)
+		resultSize, err := client.ActivitiesList(srv, eventType, timestamp, now.Format(time.RFC3339), resultChannel)
 		if err != nil {
 			log.Fatalf("Unable to retrieve activities list for %s: %v", eventType, err)
 		}
