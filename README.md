@@ -20,7 +20,7 @@ The collector was built with Kubernetes in mind.
 
 ### Documentation
 
-Documentation can be found via the [docs](https://github.com/rfizzle/gsuite-collector/docs). Find something missing? Let us know by filing an issue!
+Documentation can be found via the [docs](https://github.com/rfizzle/gsuite-collector/tree/master/docs). Find something missing? Let us know by filing an issue!
 
 ### Issues
 
