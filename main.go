@@ -96,7 +96,7 @@ func getEvents(timestamp string, resultChannel chan<- string) (int, time.Time) {
 	now := time.Now()
 
 	// Build an HTTP client with JWT header
-	googleClient, err := client.BuildClient(viper.GetString("google-credentials"), viper.GetString("impersonated-user"))
+	googleClient, err := client.BuildClient(viper.GetString("gsuite-credentials"), viper.GetString("impersonated-user"))
 	if err != nil {
 		log.Fatalf("Unable to build client: %v", err)
 	}
