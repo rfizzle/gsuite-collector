@@ -65,6 +65,11 @@ func pollEvery(seconds int, resultsChannel chan<- string, tmpWriter *outputs.Tmp
 
 		// Copy tmp file to correct outputs
 		if eventCount > 0 {
+			// Wait until the results channel has no more messages 0
+			for len(resultsChannel) != 0 {
+				<-time.After(time.Duration(1) * time.Second)
+			}
+
 			// Close and rotate file
 			_ = tmpWriter.Rotate()
 
