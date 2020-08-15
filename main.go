@@ -19,7 +19,7 @@ func main() {
 
 	// Setup Parameters via CLI or ENV
 	if err := setupCliFlags(); err != nil {
-		log.Fatalf("missing required paramters %v", err.Error())
+		log.Fatalf("initialization failed: %v", err.Error())
 	}
 
 	// Setup log writer
@@ -65,6 +65,11 @@ func pollEvery(seconds int, resultsChannel chan<- string, tmpWriter *outputs.Tmp
 
 		// Copy tmp file to correct outputs
 		if eventCount > 0 {
+			// Wait until the results channel has no more messages 0
+			for len(resultsChannel) != 0 {
+				<-time.After(time.Duration(1) * time.Second)
+			}
+
 			// Close and rotate file
 			_ = tmpWriter.Rotate()
 
@@ -118,7 +123,7 @@ func getEvents(timestamp string, resultChannel chan<- string) (int, time.Time) {
 		if viper.GetBool("verbose") {
 			log.Printf("Getting event type %s\n", eventType)
 		}
-		resultSize, err := client.ActivitiesList(srv, eventType, timestamp, resultChannel)
+		resultSize, err := client.ActivitiesList(srv, eventType, timestamp, now.Format(time.RFC3339), resultChannel)
 		if err != nil {
 			log.Fatalf("Unable to retrieve activities list for %s: %v", eventType, err)
 		}
