@@ -1,4 +1,13 @@
-# 1.2.0 (2020-08-12)
+## [1.2.1](https://github.com/rfizzle/gsuite-collector/compare/v1.2.0...v1.2.1) (2020-08-16)
+
+
+### Bug Fixes
+
+* added wait for resuls channel to be empty to prevent race condition ([b1df56d](https://github.com/rfizzle/gsuite-collector/commit/b1df56de169fdbbca8a474a51e2d11f9b4696d00))
+
+
+
+# [1.2.0](https://github.com/rfizzle/gsuite-collector/compare/12c17eee83454be8b2aeba3cfa698ee94f0b4864...v1.2.0) (2020-08-12)
 
 
 ### Bug Fixes
